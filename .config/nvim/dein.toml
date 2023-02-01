@@ -1,0 +1,99 @@
+[[plugins]]
+repo = 'Shougo/dein.vim'
+
+# asynchronous execution
+[[plugins]]
+repo = 'Shougo/vimproc.vim'
+hook_post_update = '''
+ source ~/.config/nvim/plugins/vimproc.vim
+'''
+
+# display settings
+# custom status line
+[[plugins]]
+repo = 'vim-airline/vim-airline-themes'
+
+[[plugins]]
+repo    = 'vim-airline/vim-airline'
+depends = ['vim-airline-themes']
+
+# background color
+[[plugins]]
+repo = 'joshdick/onedark.vim'
+hook_add = '''
+  colorscheme onedark
+'''
+
+# nerdtree
+# file explorer, display directory, open files
+# how to use: https://qiita.com/zwirky/items/0209579a635b4f9c95ee
+[[plugins]]
+repo = 'scrooloose/nerdtree'
+hook_add = '''
+  nnoremap :tree :NERDTree
+'''
+
+# git settings
+# vim-gitgutter tells you the difference between current state and HEAD.
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+
+# close a bracket automatically
+[[plugins]]
+repo = 'Townk/vim-autoclose'
+
+[[plugins]]
+repo = 'prabirshrestha/vim-lsp'
+hook_add = '''
+  let g:lsp_log_verbose = 1
+  let g:lsp_log_file = expand('~/.cache/tmp/vim-lsp.log')
+  let g:lsp_diagnostics_enabled = 0
+  autocmd BufWritePre <buffer> LspDocumentFormatSync
+'''
+
+[[plugins]]
+repo = 'mattn/vim-lsp-settings'
+hook_add = '''
+  nnoremap <expr> <silent> <C-]> execute(':LspDefinition') =~ "not supported" ? "\<C-]>" : ":echo<cr>"
+'''
+hook_post_update = '''
+  let g:lsp_settings = {
+  \   'pylsp-all': {
+  \     'workspace_config': {
+  \       'pylsp': {
+  \         'configurationSources': ['flake8']
+  \       }
+  \     }
+  \   },
+  \}
+'''
+
+# completion for lsp
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete.vim'
+
+[[plugins]]
+repo = 'prabirshrestha/asyncomplete-lsp.vim'
+
+# save difference when you move to command mode from insert mode
+[[plugins]]
+repo = 'vim-scripts/vim-auto-save'
+hook_add = '''
+  let g:auto_save = 1
+  let g:auto_save_in_insert_mode = 0
+  let g:auto_save_no_updatetime = 1
+'''
+
+# tcomment_vim (easy comment out)
+# gcc: comment out or comment in the current line
+# g>c: comment out the current line
+# g<c: comment in the current line
+# gc (V mode): comment out the selected lines
+[[plugins]]
+repo = 'tomtom/tcomment_vim'
+
+[[plugins]]
+repo = 'mattn/vim-sonictemplate'
+hook_add = '''
+  let g:sonictemplate_vim_template_dir = '/root/.config/nvim/templates'
+'''

@@ -1,0 +1,37 @@
+# dein_lazy.toml is not loaded when you start vim
+# it is recommended that you write the plugins that is not always used
+
+# html
+
+# automatically close tag
+[[plugins]]
+repo = 'alvan/vim-closetag'
+on_ft = ['html', 'xhtml', 'phtml']
+hook_add = '''
+  let g:closetag_filenames = '*.html,*.xhtml,*.phtml'
+  let g:closetag_xhtml_filenames = '*.xhtml,*.jsx'
+  let g:closetag_filetypes = 'html,xhtml,phtml'
+  let g:closetag_xhtml_filetypes = 'xhtml,jsx'
+  let g:closetag_emptyTags_caseSensitive = 1
+  let g:closetag_regions = {
+    \ 'typescript.tsx': 'jsxRegion,tsxRegion',
+    \ 'javascript.jsx': 'jsxRegion',
+    \ 'typescriptreact': 'jsxRegion,tsxRegion',
+    \ 'javascriptreact': 'jsxRegion',
+    \ }
+'''
+
+# make rows into a list
+# ul>li* : create list
+# <C-y>d : select tag
+# <C-y>k : delete tag
+[[plugins]]
+repo = 'mattn/emmet-vim'
+on_ft = ['html', 'xhtml', 'phtml']
+
+# json
+
+#if you want to load with some conditions
+[[plugins]]
+repo = 'elzr/vim-json'
+on_ft = ['json']
